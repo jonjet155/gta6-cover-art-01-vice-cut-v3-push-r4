@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE CUT — One Photo, One Poster | GTA 6 Cover Art Studio</title>
+<meta name="description" content="Turn one photo into a GTA-style movie poster: one huge face, one giant VICE CUT title, neon slash, export 1080x1080, 1080x1350, 1920x1080.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='52' height='52' rx='8' fill='%23110a1e' stroke='%23ff2e88' stroke-width='4'/%3E%3Cpath d='M14 50 L50 14' stroke='%23ff2e88' stroke-width='5'/%3E%3Ctext x='32' y='42' font-family='Arial Black' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3EVC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="vc-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="5" y="5" width="54" height="54" rx="9" fill="#160a24" stroke="#ff2e88" stroke-width="4"/><path d="M13 51 L51 13" stroke="#b26bff" stroke-width="5"/><text x="32" y="43" font-family="Arial Black, sans-serif" font-size="21" font-weight="900" fill="#fff" text-anchor="middle">VC</text></svg></span>
+    <span class="brand-name">VICE <em>CUT</em></span>
+    <span class="brand-sub">One Photo, One Poster</span>
+  </div>
+  <div class="topbar-right">
+    <span class="vol">VOL. 06</span>
+    <span class="est">ORIGINAL COVER ART &bull; EST. 2026</span>
+  </div>
+</header>
+
+<main id="studio">
+  <section class="stage-col">
+    <div class="stage-wrap" id="stageWrap">
+      <canvas id="posterCanvas" width="1080" height="1080" aria-label="Poster preview"></canvas>
+      <div class="stage-hint" id="stageHint">Drag to move the photo &bull; scroll to zoom</div>
+    </div>
+    <div class="size-row" role="group" aria-label="Poster size">
+      <button type="button" class="size-btn" data-size="1080x1080">1080 &times; 1080</button>
+      <button type="button" class="size-btn" data-size="1080x1350">1080 &times; 1350</button>
+      <button type="button" class="size-btn is-active" data-size="1920x1080">1920 &times; 1080</button>
+    </div>
+    <p class="cover-note">The cover above is the exported poster. One photo, one huge face, one giant title.</p>
+  </section>
+
+  <aside class="panel-col">
+    <section class="step" id="step1">
+      <h2><span class="step-num">1</span> Drop your photo</h2>
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="photoInput" accept="image/*" hidden>
+        <span class="drop-big">Drop a photo here</span>
+        <span class="drop-small">or click to choose from your machine &mdash; never uploaded</span>
+      </label>
+      <div class="sample-strip" id="sampleStrip" aria-label="Sample photos"></div>
+      <div class="crop-row">
+        <label>Zoom <input type="range" id="zoomRange" min="1" max="3" step="0.01" value="1.15"></label>
+        <button type="button" id="fitBtn">Fit face</button>
+        <button type="button" id="centerBtn">Centre</button>
+      </div>
+      <p class="step-tip">Drag the poster to pan. Zoom until the face fills half the cover.</p>
+    </section>
+
+    <section class="step" id="step2">
+      <h2><span class="step-num">2</span> Grade, style &amp; words</h2>
+      <div class="grade-row" id="gradeRow" aria-label="Colour grade"></div>
+      <div class="style-row" id="styleRow" aria-label="Poster style"></div>
+      <label class="field">Title
+        <input type="text" id="titleInput" value="VICE CUT" maxlength="24" autocomplete="off">
+      </label>
+      <label class="field">Tagline
+        <input type="text" id="taglineInput" value="Painted in Leonida." maxlength="48" autocomplete="off">
+      </label>
+      <label class="field">Billing block
+        <input type="text" id="billingInput" value="A LEONIDA STORY &mdash; ONE COAST &middot; NO RULES &middot; COMING SOON" maxlength="90" autocomplete="off">
+      </label>
+      <div class="toggle-row">
+        <label><input type="checkbox" id="starsToggle" checked> 5-star rating</label>
+        <label><input type="checkbox" id="badgeToggle" checked> Seal badge</label>
+      </div>
+    </section>
+
+    <section class="step" id="step3">
+      <h2><span class="step-num">3</span> Export PNG</h2>
+      <button type="button" id="exportBtn" class="export-btn">Export PNG &mdash; <span id="exportSizeLabel">1920 &times; 1080</span></button>
+      <p class="step-tip">Exact pixels, ready to post. 1080&times;1080 square, 1080&times;1350 portrait, 1920&times;1080 wide.</p>
+      <p class="credit">Photos: free-license Pexels stock, see README. Fonts: Bebas Neue + Caveat (SIL OFL).</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <span>VICE CUT &mdash; a Leonida story. One coast, no rules.</span>
+  <span>Original art. No Rockstar logo, artwork or font.</span>
+</footer>
+
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+<script src="src/shots.js"></script>
+</body>
+</html>

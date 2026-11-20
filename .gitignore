@@ -1,1 +1,5 @@
+# VICE CUT push round 4 — build output and local clutter stay out of the repo.
 out/
+node_modules/
+.DS_Store
+*.log
