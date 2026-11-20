@@ -16,6 +16,16 @@ import { buildDossier } from './vendor/makefun-app.ts';
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
+// Fail fast with a clear error if the repository layout is wrong (for example
+// the program ran from the wrong directory): the grader would otherwise hand
+// in an empty app/ and fail the gate with no explanation.
+if (!existsSync(join(here, 'app', 'index.html'))) {
+  throw new Error(`VICE CUT: app/index.html not found beside main.ts (${here})`);
+}
+if (!existsSync(join(here, 'vendor', 'makefun-app.ts'))) {
+  throw new Error(`VICE CUT: vendor/makefun-app.ts not found beside main.ts (${here})`);
+}
+
 // Start from a clean output directory: the grader runs this program twice and
 // both runs must write the same bytes, so no stale file from an earlier run
 // may survive into either output.
